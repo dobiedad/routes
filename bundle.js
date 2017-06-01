@@ -15,13 +15,13 @@ App.prototype.routes = function () {
   var self = this
   return [
     routes.root({
-      redirect: function () {
+      render: function () {
         routes.app.push({screen:'login'})
       }
     }),
     routes.app({
       bindings: {
-        screen: [this.model, 'screen']
+        screen: [self.model, 'screen']
       },
       render: function () {
         return self.renderMain()
