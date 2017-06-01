@@ -3,7 +3,7 @@ var app = express()
 
 app.set('view engine', 'ejs')
 
-app.get('/users/brands', function (req, res) {
+app.get('/', function (req, res) {
   res.render('index')
 })
 
