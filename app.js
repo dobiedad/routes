@@ -16,7 +16,7 @@ App.prototype.routes = function() {
     return [
       routes.root({
        redirect: function() {
-         this.screen = 'home'
+         self.model.screen = 'home'
        }
       }),
       routes.app({
