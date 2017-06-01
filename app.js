@@ -12,7 +12,6 @@ function App (model) {
 
 App.prototype.routes = function () {
   var self = this
-
   return [
     routes.root({
       redirect: function () {
@@ -24,7 +23,7 @@ App.prototype.routes = function () {
         screen: [self.model, 'screen']
       },
       render: function () {
-        return self.renderMain(model)
+        return self.renderMain()
       }
     })
   ]
@@ -33,7 +32,7 @@ App.prototype.routes = function () {
 App.prototype.renderMain = function () {
   var self = this
   return h('div.main',
-    h('h4', 'current screen: ' + this.model.screen),
+    h('h4', 'current screen: ' + self.model.screen),
     h('button', {onclick: function () {
       self.model.screen = 'apples'
     }}, 'Change Sceren To Apples')
