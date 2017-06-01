@@ -7,11 +7,11 @@ function App (model) {
    this.model = model
 }
 
-App.prototype.routes = function() {
+App.prototype.render = function() {
   var self = this;
 
   var route = router.route('/users/brands/:screen')
-   return [
+   return h('div',
      route({
        bindings:{
          screen: [self.model,'screen']
@@ -20,7 +20,7 @@ App.prototype.routes = function() {
          return self.renderMain(model)
        }
      })
-    ]
+  )
 }
 
 App.prototype.renderMain = function() {
@@ -29,7 +29,7 @@ App.prototype.renderMain = function() {
     h('h4','current screen: ' + this.model.screen),
     h('button',{onclick:function () {
       self.model.screen = 'apples'
-    }},'Apples')
+    }},'Change Sceren To Apples')
   )
 }
 
