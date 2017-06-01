@@ -16,12 +16,12 @@ App.prototype.routes = function () {
   return [
     routes.root({
       redirect: function () {
-        self.model.screen = 'home'
+        routes.app.push({screen:'login'})
       }
     }),
     routes.app({
       bindings: {
-        screen: [self.model, 'screen']
+        screen: [this.model, 'screen']
       },
       render: function () {
         return self.renderMain()
@@ -34,9 +34,9 @@ App.prototype.renderMain = function () {
   var self = this
   return h('div.main',
     h('h4', 'current screen: ' + self.model.screen),
-    h('button', {onclick: function () {
-      self.model.screen = 'apples'
-    }}, 'Change Sceren To Apples')
+    h('button', { onclick: function () {
+      self.model.screen = 'home'
+    }}, 'Login')
   )
 }
 
