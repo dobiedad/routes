@@ -2,15 +2,15 @@
 var hyperdom = require('hyperdom')
 var h = hyperdom.html
 var router = require('hyperdom/router')
+var route = router.route('/users/brands/:screen')
 
 function App (model) {
    this.model = model
 }
 
-App.prototype.render = function() {
+App.prototype.routes = function() {
   var self = this;
 
-  var route = router.route('/users/brands/:screen')
    return h('div',
      route({
        bindings:{
@@ -36,7 +36,7 @@ App.prototype.renderMain = function() {
 var model = {screen:'home'}
 var app = new App(model)
 
-hyperdom.append(document.body, app)
+hyperdom.append(document.body, app, {router: router})
 
 },{"hyperdom":11,"hyperdom/router":23}],2:[function(require,module,exports){
 
