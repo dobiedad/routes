@@ -2,8 +2,8 @@ var hyperdom = require('hyperdom')
 var h = hyperdom.html
 var router = require('hyperdom/router')
 var routes = {
-  app: router.route('/:screen'),
-  root: router.route('/')
+  root: router.route('/'),
+  app: router.route('/:screen')
 }
 
 function App (model) {
@@ -15,7 +15,7 @@ App.prototype.routes = function () {
   return [
     routes.root({
       render: function () {
-        routes.app.push({screen:'login'})
+        return routes.app.replace({screen:'login'})
       }
     }),
     routes.app({
@@ -23,6 +23,7 @@ App.prototype.routes = function () {
         screen: [self.model, 'screen']
       },
       render: function () {
+        console.log('app render');
         return self.renderMain()
       }
     })
@@ -39,7 +40,7 @@ App.prototype.renderMain = function () {
   )
 }
 
-var model = {screen: 'home'}
+var model = {screen: 'login'}
 var app = new App(model)
 
 hyperdom.append(document.body, app, {router: router})
