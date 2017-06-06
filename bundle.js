@@ -15,15 +15,15 @@ App.prototype.routes = function () {
   var self = this
   return [
     routes.root({
-      render: function () {
-        routes.app.push({screen:'login'})
-        self.refresh()
+      redirect: function() {
+        return routes.app.url({screen:'login'})
       }
     }),
     routes.app({
       bindings: {
         screen: [self.model, 'screen']
       },
+      push: {screen: true},
       render: function () {
         console.log('renderMain called');
         return self.renderMain()
