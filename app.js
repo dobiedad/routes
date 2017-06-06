@@ -15,7 +15,8 @@ App.prototype.routes = function () {
   return [
     routes.root({
       render: function () {
-        return routes.app.replace({screen:'login'})
+        routes.app.push({screen:'login'})
+        self.refresh()
       }
     }),
     routes.app({
@@ -36,7 +37,7 @@ App.prototype.renderMain = function () {
     h('h4', 'current screen: ' + self.model.screen),
     h('button', { onclick: function () {
       self.model.screen = 'home'
-    }}, 'Login')
+    }}, 'Home')
   )
 }
 
