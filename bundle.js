@@ -25,7 +25,7 @@ App.prototype.routes = function () {
         screen: [self.model, 'screen']
       },
       render: function () {
-        console.log('app render');
+        console.log('renderMain called');
         return self.renderMain()
       }
     })
@@ -38,7 +38,13 @@ App.prototype.renderMain = function () {
     h('h4', 'current screen: ' + self.model.screen),
     h('button', { onclick: function () {
       self.model.screen = 'home'
-    }}, 'Home')
+    }}, 'Change route to home'),
+    h('button', { onclick: function () {
+      self.model.screen = 'login'
+    }}, 'Change route to login'),
+    h('button', { onclick: function () {
+      self.model.screen = 'other'
+    }}, 'Change route to other'),
   )
 }
 
